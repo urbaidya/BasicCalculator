@@ -3,6 +3,8 @@ package com.calculator.sopra;
 import java.util.Scanner;
 
 import com.calculator.expression.sopra.ExtractExpression;
+import com.calculator.expression.sopra.OperatorsAndOperands;
+import com.calculator.expression.sopra.SolveExpression;
 //import com.calculator.sopra.calculation.Calculator;
 
 public class UserInput {
@@ -22,8 +24,13 @@ public class UserInput {
 			if (choice.equals("1")) { // Option 1
 				String input = getExpressionInput(sc);
 				if (Validations.myValidations(input)) {
-					ExtractExpression extExpression = new ExtractExpression();
-					System.out.println("RESULT= "+extExpression.extract(input));
+					ExtractExpression extExpression = new ExtractExpression();;
+					SolveExpression expLogic = new SolveExpression();
+					OperatorsAndOperands operatorsAndOperands = extExpression.extract(input);
+					
+					System.out.println("RESULT= "+expLogic.logic(
+							operatorsAndOperands.getOperatorsList(), 
+							operatorsAndOperands.getOperandsList()));
 				}
 				else {
 					System.out.println("Please try again.");
@@ -41,8 +48,14 @@ public class UserInput {
 //							operator));
 //					
 					if (Validations.myValidations(input)) {
-						ExtractExpression extExpression = new ExtractExpression();
-						System.out.println("RESULT= "+extExpression.extract(input));
+						ExtractExpression extExpression = new ExtractExpression();;
+						SolveExpression expLogic = new SolveExpression();
+						
+						OperatorsAndOperands operatorsAndOperands = extExpression.extract(input);
+						
+						System.out.println("RESULT= "+expLogic.logic(
+								operatorsAndOperands.getOperatorsList(), 
+								operatorsAndOperands.getOperandsList()));
 					}
 					else {
 						System.out.println("Please try again.");

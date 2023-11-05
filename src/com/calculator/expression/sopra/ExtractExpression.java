@@ -7,7 +7,6 @@ import java.util.regex.Pattern;
 
 public class ExtractExpression {
 	
-	private SolveExpression expLogic;
 	private Queue<Character> operatorsList;
 	private Queue<Double> operandsList;
 	private String number;
@@ -15,14 +14,13 @@ public class ExtractExpression {
 	private Matcher matcher;
 	
 	public ExtractExpression() {
-		expLogic = new SolveExpression();
 		operatorsList = new LinkedList<>();
 		operandsList = new LinkedList<>();
 		number = "";
 		pattern = Pattern.compile("[0-9.]");
 	}
 
-	public Double extract(String input) {
+	public OperatorsAndOperands extract(String input) {
 		
 		for (int i=0; i<input.length() ;i++) { //loop over input
 			String c = String.valueOf(input.charAt(i)); //get each character of input
@@ -39,6 +37,8 @@ public class ExtractExpression {
 		operandsList.add(Double.parseDouble(number));
 //		System.out.println(operandsList);
 //		System.out.println(operatorsList);
-		return expLogic.logic(operatorsList, operandsList);
+		OperatorsAndOperands operatorsAndOperands = new OperatorsAndOperands(
+				operatorsList, operandsList);
+		return operatorsAndOperands;
 	}
 }

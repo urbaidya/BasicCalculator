@@ -10,7 +10,7 @@ public class SolveExpression {
 	private double result;
 	private double nextOperand;
 	
-	SolveExpression(){
+	public SolveExpression(){
 		calculator = new Calculator();
 		nextOperand = 0;
 	}
