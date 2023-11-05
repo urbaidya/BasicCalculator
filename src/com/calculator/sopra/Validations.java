@@ -81,6 +81,10 @@ public abstract class Validations {
 			System.out.println("Second Number entered is not a Number.");
 			return false;
 		}
+		if (Double.parseDouble(num1)>9999 || Double.parseDouble(num2)>9999) {
+			System.out.println("Numbers entered are greater than 4 digits");
+			return false;
+		}
 		pattern = Pattern.compile("[^+\\-*/]");
 		matcher = pattern.matcher(operation);
 		if (matcher.find()) {
