@@ -1,23 +1,25 @@
 package com.calculator.expression.sopra;
 
 import java.util.LinkedList;
-import java.util.Queue;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ExtractExpression {
 	
-	private Queue<Character> operatorsList;
-	private Queue<Double> operandsList;
+	private LinkedList<Character> operatorsList;
+	private LinkedList<Double> operandsList;
 	private String number;
 	private Pattern pattern;
 	private Matcher matcher;
+	OperatorsAndOperands operatorsAndOperands;
 	
 	public ExtractExpression() {
 		operatorsList = new LinkedList<>();
 		operandsList = new LinkedList<>();
 		number = "";
 		pattern = Pattern.compile("[0-9.]");
+		operatorsAndOperands = new OperatorsAndOperands();
+		
 	}
 
 	public OperatorsAndOperands extract(String input) {
@@ -37,8 +39,10 @@ public class ExtractExpression {
 		operandsList.add(Double.parseDouble(number));
 //		System.out.println(operandsList);
 //		System.out.println(operatorsList);
-		OperatorsAndOperands operatorsAndOperands = new OperatorsAndOperands(
-				operatorsList, operandsList);
+//		OperatorsAndOperands operatorsAndOperands = new OperatorsAndOperands(
+//				operatorsList, operandsList);
+		operatorsAndOperands.setOperatorsList(operatorsList);
+		operatorsAndOperands.setOperandsList(operandsList);
 		return operatorsAndOperands;
 	}
 }

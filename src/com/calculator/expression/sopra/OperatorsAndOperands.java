@@ -1,19 +1,33 @@
 package com.calculator.expression.sopra;
 
-import java.util.Queue;
+import java.util.LinkedList;
 
 public class OperatorsAndOperands {
 
-	private Queue<Character> operatorsList;
-	private Queue<Double> operandsList;
-	public OperatorsAndOperands(Queue<Character> operatorsList, Queue<Double> operandsList) {
+	private LinkedList<Character> operatorsList;
+	private LinkedList<Double> operandsList;
+	
+	//CONSTRUCTORS
+	public OperatorsAndOperands() {
+		
+	}
+	public OperatorsAndOperands(LinkedList<Character> operatorsList, LinkedList<Double> operandsList) {
 		this.operatorsList = operatorsList;
 		this.operandsList = operandsList;
 	}
-	public Queue<Character> getOperatorsList() {
+	//GETTERS
+	public LinkedList<Character> getOperatorsList() {
 		return operatorsList;
 	}
-	public Queue<Double> getOperandsList() {
+	public LinkedList<Double> getOperandsList() {
 		return operandsList;
 	}
+	//SETTERS
+	public void setOperatorsList(LinkedList<Character> operatorsList) {
+		this.operatorsList = operatorsList;
+	}
+	public void setOperandsList(LinkedList<Double> operandsList) {
+		this.operandsList = operandsList;
+	}
+	
 }

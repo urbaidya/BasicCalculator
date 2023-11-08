@@ -1,6 +1,6 @@
 package com.calculator.expression.sopra;
 
-import java.util.Queue;
+import java.util.LinkedList;
 
 import com.calculator.sopra.calculation.Calculator;
 
@@ -15,7 +15,7 @@ public class SolveExpression {
 		nextOperand = 0;
 	}
 	
-	public double logic(Queue<Character> operatorsList, Queue<Double> operandsList) {
+	public double logic(LinkedList<Character> operatorsList, LinkedList<Double> operandsList) {
 		result=operandsList.remove();
 		
 		for (char operator: operatorsList) { //looping over all operators list

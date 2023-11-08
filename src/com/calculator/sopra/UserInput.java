@@ -27,7 +27,7 @@ public class UserInput {
 					ExtractExpression extExpression = new ExtractExpression();;
 					SolveExpression expLogic = new SolveExpression();
 					OperatorsAndOperands operatorsAndOperands = extExpression.extract(input);
-					
+
 					System.out.println("RESULT= "+expLogic.logic(
 							operatorsAndOperands.getOperatorsList(), 
 							operatorsAndOperands.getOperandsList()));
@@ -38,28 +38,17 @@ public class UserInput {
 			}
 			else if (choice.equals("2")) { // Option 2
 				String input = getUserBasedInput(sc);
-				if (!input.equals("ERROR")) {
-//					char operator = input.charAt(0);
-//					String[] operands = input.substring(1, input.length()).split(",");
-//					Calculator calc = new Calculator();
-//					System.out.println("RESULT= "+calc.calculate(
-//							Double.parseDouble(operands[0]), 
-//							Double.parseDouble(operands[1]),
-//							operator));
-//					
-					if (Validations.myValidations(input)) {
-						ExtractExpression extExpression = new ExtractExpression();;
-						SolveExpression expLogic = new SolveExpression();
-						
-						OperatorsAndOperands operatorsAndOperands = extExpression.extract(input);
-						
-						System.out.println("RESULT= "+expLogic.logic(
-								operatorsAndOperands.getOperatorsList(), 
-								operatorsAndOperands.getOperandsList()));
-					}
-					else {
-						System.out.println("Please try again.");
-					}
+				if (!input.equals("ERROR")) {	
+
+					ExtractExpression extExpression = new ExtractExpression();;
+					SolveExpression expLogic = new SolveExpression();
+
+					OperatorsAndOperands operatorsAndOperands = extExpression.extract(input);
+
+					System.out.println("RESULT= "+expLogic.logic(
+							operatorsAndOperands.getOperatorsList(), 
+							operatorsAndOperands.getOperandsList()));
+
 				}
 				else {
 					System.out.println("Please try again.");
@@ -86,6 +75,7 @@ public class UserInput {
 	private static String getExpressionInput(Scanner sc) {
 		String input;
 		System.out.println("ENTER THE EXPRESSION TO THE CALCULATOR:");
+		System.out.println("You can perform add(+),sub(-),mul(*),div(/)");
 		input = sc.nextLine();
 		System.out.println("\nYOU HAVE ENTERED: "+input);
 		return input;
@@ -96,14 +86,13 @@ public class UserInput {
 		String operation;
 		System.out.println("ENTER FIRST NUMBER");
 		num1 = sc.nextLine();
-		System.out.println("ENTER OPERATION TO PERFORM (+,-,*,/):");
+		System.out.println("ENTER OPERATION TO PERFORM ('+','-','*','/'):");
 		operation = sc.nextLine();
 		System.out.println("ENTER SECOND NUMBER");
 		num2 = sc.nextLine();
 		System.out.println("\nYOU ARE TRYING: "+num1+operation+num2);
 		if (Validations.checkInput(num1,num2,operation)) {
 			return num1+operation+num2;
-//			return operation+num1+","+num2;
 		}
 		return "ERROR";
 	}
