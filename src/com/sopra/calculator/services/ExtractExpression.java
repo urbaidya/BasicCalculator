@@ -23,7 +23,9 @@ public class ExtractExpression {
 	}
 
 	public OperatorsAndOperands extract(String input) {
-		
+		operatorsList.clear(); //clear the operators list
+		operandsList.clear();  //clear the operands list
+		number="";
 		for (int i=0; i<input.length() ;i++) { //loop over input
 			String c = String.valueOf(input.charAt(i)); //get each character of input
 			matcher = pattern.matcher(c); 
@@ -37,10 +39,7 @@ public class ExtractExpression {
 			}
 		}
 		operandsList.add(Double.parseDouble(number));
-//		System.out.println(operandsList);
-//		System.out.println(operatorsList);
-//		OperatorsAndOperands operatorsAndOperands = new OperatorsAndOperands(
-//				operatorsList, operandsList);
+		
 		operatorsAndOperands.setOperatorsList(operatorsList);
 		operatorsAndOperands.setOperandsList(operandsList);
 		return operatorsAndOperands;
