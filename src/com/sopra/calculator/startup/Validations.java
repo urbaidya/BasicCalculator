@@ -69,24 +69,24 @@ public abstract class Validations {
 		return true;
 	}
 
-	protected static boolean checkInput(String num1, String num2, String operation) {
-		Pattern pattern = Pattern.compile("[^0-9.]");
-		Matcher matcher = pattern.matcher(num1);
-		if (matcher.find()) {
-			System.out.println("First Number entered is not a Number.");
-			return false;
-		}
-		matcher = pattern.matcher(num2);
-		if (matcher.find()) {
-			System.out.println("Second Number entered is not a Number.");
-			return false;
-		}
-		pattern = Pattern.compile("[^+\\-*/]");
-		matcher = pattern.matcher(operation);
-		if (matcher.find()) {
-			System.out.println("Incorrect Operation Entered.");
-			return false;
-		}
-		return true;
-	}
+//	protected static boolean checkInput(String num1, String num2, String operation) {
+//		Pattern pattern = Pattern.compile("[^0-9.]");
+//		Matcher matcher = pattern.matcher(num1);
+//		if (matcher.find()) {
+//			System.out.println("First Number entered is not a Number.");
+//			return false;
+//		}
+//		matcher = pattern.matcher(num2);
+//		if (matcher.find()) {
+//			System.out.println("Second Number entered is not a Number.");
+//			return false;
+//		}
+//		pattern = Pattern.compile("[^+\\-*/]");
+//		matcher = pattern.matcher(operation);
+//		if (matcher.find()) {
+//			System.out.println("Incorrect Operation Entered.");
+//			return false;
+//		}
+//		return true;
+//	}
 }

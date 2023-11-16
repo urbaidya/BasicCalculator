@@ -42,16 +42,25 @@ public class UserInput {
 			}
 			else if (choice.equals("2")) { // Option 2
 				String input = getUserBasedInput(sc);
-				if (!input.equals("ERROR")) {	
+				if (Validations.myValidations(input)) {
 					OperatorsAndOperands operatorsAndOperands = extExpression.extract(input);
 					System.out.println("RESULT= "+expLogic.logic(
 							operatorsAndOperands.getOperatorsList(), 
 							operatorsAndOperands.getOperandsList()));
-
 				}
 				else {
 					System.out.println("Please try again.");
 				}
+//				if (!input.equals("ERROR")) {	
+//					OperatorsAndOperands operatorsAndOperands = extExpression.extract(input);
+//					System.out.println("RESULT= "+expLogic.logic(
+//							operatorsAndOperands.getOperatorsList(), 
+//							operatorsAndOperands.getOperandsList()));
+//
+//				}
+//				else {
+//					System.out.println("Please try again.");
+//				}
 			}
 			else if (choice.equals("3")) {
 				System.out.println("SEE YOU AGAIN.. !!");
@@ -83,16 +92,27 @@ public class UserInput {
 		String num1;
 		String num2;
 		String operation;
-		System.out.println("ENTER FIRST NUMBER");
-		num1 = sc.nextLine();
-		System.out.println("ENTER OPERATION TO PERFORM ('+','-','*','/'):");
-		operation = sc.nextLine();
-		System.out.println("ENTER SECOND NUMBER");
-		num2 = sc.nextLine();
-		System.out.println("\nYOU ARE TRYING: "+num1+operation+num2);
-		if (Validations.checkInput(num1,num2,operation)) {
-			return num1+operation+num2;
+		int noOfNumbers = 0;
+		String finalExpression="";
+		try {
+			System.out.println("HOW MANY NUMBERS YOU WANT TO PROCESS:");
+			noOfNumbers = Integer.valueOf(sc.nextLine().trim());
+			System.out.println("ENTER NUMBER");
+			num1 = sc.nextLine();
+			finalExpression += num1;
+			for (int i=1; i<noOfNumbers; i++) {
+				System.out.println("ENTER OPERATION TO PERFORM ('+','-','*','/'):");
+				operation = sc.nextLine();
+				finalExpression += operation;
+				System.out.println("ENTER NUMBER");
+				num2 = sc.nextLine();
+				finalExpression += num2;
+			}
+			System.out.println("\nYOU ARE TRYING: "+finalExpression);
 		}
-		return "ERROR";
+		catch (Exception e) {
+			System.out.println("Incorrect Number Entered!");
+		}
+		return finalExpression;
 	}
 }
